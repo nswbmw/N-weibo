@@ -1,0 +1,14 @@
+<template name="index">
+  {{#if currentUser}}
+    <form class="well form-inline center" style="text-align: center;"> 
+      <input type="text" class="span8" id="post"> 
+      <button id="submit" class="btn btn-success"><i class="icon-comment icon-white"></i> 发表</button> 
+    </form>
+  {{/if}}
+
+  {{#each posts}}
+    <h2>{{user.username}} 说</h2>
+    <p class="muted">{{time}}</p>
+    <p>{{#markdown}}{{post}}{{/markdown}}</p>
+  {{/each}}
+</template>

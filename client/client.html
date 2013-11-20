@@ -1,0 +1,69 @@
+<head>
+  <title>weibo</title>
+  <style type="text/css"> 
+    body {padding-top: 60px;padding-bottom: 20px;} 
+  </style> 
+</head>
+
+<body>
+{{> nav}}
+{{> container}}
+{{> footer}}
+</body>
+
+<template name="nav">
+  <div class="navbar navbar-inverse navbar-fixed-top"> 
+    <div class="navbar-inner"> 
+      <div class="container"> 
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> 
+          <span class="icon-bar"></span> 
+          <span class="icon-bar"></span> 
+          <span class="icon-bar"></span> 
+        </a> 
+        <a class="brand" href="/">weibo</a> 
+        <div class="nav-collapse"> 
+          <ul class="nav"> 
+            <li class="{{active.index}}"><a href="/">首页</a></li> 
+            {{#if currentUser}}
+              <li><a href="/logout">登出</a></li> 
+            {{else}}
+              <li class="{{active.login}}"><a href="/login">登入</a></li> 
+              <li class="{{active.reg}}"><a href="/reg">注册</a></li> 
+            {{/if}}
+          </ul> 
+        </div> 
+      </div> 
+    </div> 
+  </div> 
+</template>
+
+<template name="container">
+  <div id="container" class="container">
+    {{> info}}
+    {{#if currentUrl.index}}
+      {{> index}}
+    {{/if}}
+
+    {{#if currentUrl.login}}
+      {{> login}}
+    {{/if}}
+
+    {{#if currentUrl.reg}}
+      {{> reg}}
+    {{/if}}
+  </div>
+</template>
+
+<template name="footer">
+  <p class="muted text-center">nswbmw 2013</p>
+</template>
+
+<template name="info">
+  {{#if info.success}}
+    <div class="alert alert-success">{{info.success}}</div>
+  {{/if}}
+
+  {{#if info.error}}
+    <div class="alert alert-error">{{info.error}}</div>
+  {{/if}}
+</template>
